@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Events</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'layouts/header' %>
+
+<% if flash[:notice] %>
+	<p class="flash notice">
+		<%=flash[:notice] %>
+	</p>
+<% end %>
+
+<%= render 'layouts/sidebar' %>
+
+<%= yield %>
+
+<%= render 'layouts/footer' %>
+
+</body>
+</html>

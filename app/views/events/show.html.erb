@@ -1,0 +1,39 @@
+
+
+<article>
+	<header>
+	<%= image_for(@event) %>
+		<h1><%= @event.name %></h1>
+	</header>
+	<p>
+		<%= @event.description %>
+	</p>
+	<h3>When</h3>
+	<p>
+		<%= @event.starts_at %>
+	</p>
+	<h3>Where</h3>
+	<p>
+		<%= @event.location %>
+	</p>
+
+	<h3>Price</h3>
+	<p>
+		<%= format_price(@event)%>
+	</p>
+<h3>Capacity</h3>
+
+
+
+<%= link_to "Who's registered?", event_registrations_path(@event), class: "button ok register" %>
+
+
+</article>
+<%= register_link(@event) %>
+
+
+<p>
+	(<%= pluralize(@event.spots_left, 'spot') %> available.)
+</p>
+<%= link_to "Edit", edit_event_path(@event) %>
+<%= link_to "Delete", event_path(@event), method: :delete, data: { confirm: 'Are you sure?' } %>
