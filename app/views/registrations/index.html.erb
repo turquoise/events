@@ -1,12 +1,17 @@
 <header id="content-header">
-	<h1>Registrations for <%= link_to(@event.name, @event) %></h1>
+  <h1>Registrations for <%= link_to @event.name, @event %></h1>
 </header>
 
 <ol id="registrations">
-	<% @registrations.each do |r| %>
-		<li>
-			<%= mail_to(r.email, r.name) %>
-			(<%= r.how_heard %>)
-		</li>
-	<% end %>
+  <% @registrations.each do |registration| %>
+    <li>
+      <%= mail_to(registration.email, registration.name) %>
+      <span class="date">
+        <%= time_ago_in_words(registration.created_at) %> ago
+      </span>
+      <span class="how-heard">
+        (<%= registration.how_heard %>)    
+      </span>
+    </li>
+  <% end %>
 </ol>

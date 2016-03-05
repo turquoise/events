@@ -14,16 +14,12 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		# this is needed to create a new user
 		@user = User.new(user_params)
-		# if the user submitted a valid form.
 		if @user.save
-			# redirect to the user show page.
+			session[:user_id] = @user.id
 			redirect_to @user, notice: "Thanks for signing up!"
 		else
-			# renders the form again so they can try to sign up again.
 			render :new
-
 		end
 	end
 
@@ -48,7 +44,7 @@ class UsersController < ApplicationController
 
 	private
 	def  user_params
-		params.require(:user).permit(:name, :email, :password, :password_confirmation )
+		params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	end
 
 end

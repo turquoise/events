@@ -4,7 +4,8 @@ module RegistrationsHelper
 		if event.sold_out?
 			content_tag(:strong, "Sold Out!")
 		else
-			link_to "Register!", new_event_registration_path(event), class: "button ok register"
+			hint = content_tag(:span, "Only #{pluralize(event.spots_left, 'spot')} left!", class: 'scarcity')
+      		link_to "Register! #{hint}".html_safe, new_event_registration_path(event), class: 'button ok register'
 		end		
 	end
 
