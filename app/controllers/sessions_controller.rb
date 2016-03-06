@@ -14,5 +14,10 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, notice: "Now you're signed out!"
+  end
   	
 end
