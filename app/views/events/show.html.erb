@@ -1,4 +1,4 @@
-
+<% content_for(:title, @event.name ) %>
 
 <article>
 	<header>
@@ -19,7 +19,7 @@
 	<% end %>
 
 
-
+<% content_for(:side) do %>
 	<% if @likers.any? %>
 		<h3>Likers</h3>
 		<ul>
@@ -41,6 +41,7 @@
 			<li><%= category.name %></li>
 		<% end %>
 	</ul>
+<% end %>
 
 
 
