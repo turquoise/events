@@ -16,15 +16,16 @@
 	<% end %>
 
 	<% if @registrations.any? %>
-	<h3>Registered For</h3>
-	<ul>
-	<% @registrations.each do |r| %>
-		<li>
-			<%= link_to  r.event.name,  registration.event %>
-			(<%= time_ago_in_words(r.created_at) %> ago)
-		</li>
+		<h3>Registered For</h3>
+		<ul>
+		<% @registrations.each do |r| %>
+			<li>
+				<%= link_to  r.event.name,  r.event %>
+				(<%= time_ago_in_words(r.created_at) %> ago)
+			</li>
+		<% end %>
+		</ul>
 	<% end %>
-	</ul>
 	<footer>
 		<nav>
 			<% if current_user?(@user) %>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :likes
+  
   resource :session
   get "signup" => "users#new"
   resources :users
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   #patch "events/:id" => "events#update"
   resources :events do
     resources :registrations
+    resources :likes
   end
 
 
