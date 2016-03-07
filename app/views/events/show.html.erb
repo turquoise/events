@@ -8,6 +8,20 @@
 	<p>
 		<%= @event.description %>
 	</p>
+	<% if @likers.any? %>
+		<h3>Likers</h3>
+		<ul>
+			<% @likers.each do |user| %>
+			<li>
+				<%= link_to user.name, user %>
+			</li>
+			<% end %>
+		</ul>
+	<% end %>
+
+	<p>
+		<%= pluralize(@likers.size, 'like') %>
+	</p>
 	<h3>When</h3>
 	<p>
 		<%= @event.starts_at %>
