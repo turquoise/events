@@ -11,6 +11,8 @@ class Event < ActiveRecord::Base
 	has_many :registrations, dependent: :destroy
 	has_many :likes, dependent: :destroy
 	has_many :likers, through: :likes, source: :user
+	has_many :categorizations, dependent: :destroy
+	has_many :categories, through: :categorizations
 
 	scope :past, -> { where("starts_at < ?", Time.now).order("starts_at") }
 	scope :upcoming, -> { where("starts_at >= ?", Time.now).order("starts_at") }

@@ -34,6 +34,17 @@
 	<p>
 		<%= pluralize(@likers.size, 'like') %>
 	</p>
+
+	<h3>Categories</h3>
+	<ul>
+		<% @categories.each do |category| %>
+			<li><%= category.name %></li>
+		<% end %>
+	</ul>
+
+
+
+
 	<h3>When</h3>
 	<p>
 		<%= @event.starts_at %>
