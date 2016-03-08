@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   #get "events/:id" => "events#show", as: "event"
   #get "events/:id/edit" => "events#edit", as: "edit_event"
   #patch "events/:id" => "events#update"
+  
+  get "events/filter/:scope" => "events#index", as: :filtered_events
+
+
   resources :events do
     resources :registrations
     resources :likes

@@ -4,8 +4,17 @@ class EventsController < ApplicationController
 
 
 	def index
-		@time = Time.now
-		@events = Event.all
+		case params[:scope]
+		when "past"
+			@events = Event.past
+		when "free"
+			@events = Event.free
+		when "recent"
+			@events = Event.recent
+		else
+			@time = Time.now
+			@events = Event.all
+		end
 		#@events = Event.where("starts_at >= ?", Time.now).order("starts_at")
 		#@events = Event.upcoming		
 	end

@@ -19,9 +19,9 @@ class Event < ActiveRecord::Base
 	scope :free, -> { upcoming.where(price: 0).order(:name) }
 	scope :recent, -> (max=3) { past.limit(max) }
 
-	#def free?
-		#price.zero? || price.blank?
-	#end
+	def free?
+		price.zero? || price.blank?
+	end
 
 	#def self.past
 		#where("starts_at < ?", Time.now).order("starts_at")
