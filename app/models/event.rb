@@ -19,9 +19,9 @@ class Event < ActiveRecord::Base
 	scope :free, -> { upcoming.where(price: 0).order(:name) }
 	scope :recent, -> (max=3) { past.limit(max) }
 
-	def free?
-		price.zero? || price.blank?
-	end
+	#def free?
+		#price.zero? || price.blank?
+	#end
 
 	#def self.past
 		#where("starts_at < ?", Time.now).order("starts_at")
@@ -32,7 +32,11 @@ class Event < ActiveRecord::Base
 	#end
 
 	def spots_left
-		capacity - registrations.size
+		if capacity.zero?
+			0
+		else
+			capacity - registrations.size
+		end
 	end
 
 	def sold_out?
